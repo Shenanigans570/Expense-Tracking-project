@@ -8,7 +8,7 @@ class AssetsController < ApplicationController
     end
 
     def show 
-        render json: find_assets
+        render json: @search_assets
     end
 
     def create
