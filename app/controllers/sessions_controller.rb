@@ -3,11 +3,12 @@ class SessionsController < ApplicationController
 
     def login 
     user = User.find_by!(email: params[:email])
-    if user&.authenticate(params[:password])
-        session[:user_id] = user.id
-        render json: user, status: :ok
-    else 
-            render json: {error: "wrong username or password, playa."}, status: :unauthorized
+        if user&.authenticate(params[:password])
+            session[:user_id] = user.id
+            render json: user, status: :ok
+        else 
+                render json: {error: "wrong username or password, playa."}, status: :unauthorized
+        end
     end
 
     def logout 
@@ -15,5 +16,5 @@ class SessionsController < ApplicationController
         head :no_content
     end
 
-end
+    
 end

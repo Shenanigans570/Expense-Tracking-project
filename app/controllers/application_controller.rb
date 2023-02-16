@@ -11,7 +11,6 @@ end
 
 def authorized_user 
     render json: {errors: "YOU AINT SPOSED TA BE HERE"}, status: :unauthorized unless current_user
-
 end
 
 private
