@@ -5,9 +5,12 @@ Transaction.destroy_all
 Asset.destroy_all
 puts 'DB empty'
 
+puts "seeding user for ryan"
+ryan = User.create(first_name:'Ryan', last_name: 'Sullivan', email: 'ryan@gmail.com', password: 'password')
+
 puts 'seeding users'
 5.times do 
-    User.create(first_name:Faker::Name.first_name, last_name:Faker::Name.last_name, email:Faker::Internet.email)
+    User.create(first_name:Faker::Name.first_name, last_name:Faker::Name.last_name, email:Faker::Internet.email, password:"password")
 end
 puts 'users seeded'
 

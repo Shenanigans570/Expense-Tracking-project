@@ -3,8 +3,8 @@ class TransactionsController < ApplicationController
  
 
     def index
-        all_transactions = Transaction.all
-        render json: all_transactions, status: :ok
+        # all_transactions = Transaction.all
+        render json: @user.transactions, status: :ok
     end
 
     def show

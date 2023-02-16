@@ -3,8 +3,7 @@ class AssetsController < ApplicationController
    
 
     def index
-        all_assets = Asset.all
-        render json: all_assets
+        render json: @user.assets, status: :ok
     end
 
     def show 
