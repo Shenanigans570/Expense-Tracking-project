@@ -11,7 +11,7 @@ class AssetsController < ApplicationController
     end
 
     def create
-        params[:user_id] = 1
+        params[:user_id] = @user.id
         newAsset = Asset.create!(asset_params)
          render json: newAsset, status: :created
     end
