@@ -12,7 +12,7 @@ class TransactionsController < ApplicationController
     end
 
     def create 
-        params[:asset_id] = 1
+        # params[:asset_id] = 1
         params[:user_id] = @user.id
         newTransaction = Transaction.create!(transaction_params)
         render json: newTransaction, status: :created
