@@ -3,16 +3,17 @@ class AssetsController < ApplicationController
    
 
     def index
-        all_assets = Asset.all
-        render json: all_assets
+        render json: @user.assets, status: :ok
     end
 
     def show 
-        render json: find_assets
+        render json: @search_assets
     end
 
     def create
-        render json: Asset.create!(asset_params)
+        params[:user_id] = @user.id
+        newAsset = Asset.create!(asset_params)
+         render json: newAsset, status: :created
     end
 
     def destroy

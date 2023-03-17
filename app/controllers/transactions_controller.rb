@@ -1,10 +1,10 @@
 class TransactionsController < ApplicationController
-    before_action :find_transactions, only: [:show, :create, :destroy, :update]
+    before_action :find_transactions, only: [:show, :destroy, :update]
  
 
     def index
-        all_transactions = Transaction.all
-        render json: all_transactions, status: :ok
+        # all_transactions = Transaction.all
+        render json: @user.transactions, status: :ok
     end
 
     def show
@@ -12,7 +12,9 @@ class TransactionsController < ApplicationController
     end
 
     def create 
-        newTransaction = Transaction.create(transaction_params)
+        # params[:asset_id] = 1
+        params[:user_id] = @user.id
+        newTransaction = Transaction.create!(transaction_params)
         render json: newTransaction, status: :created
     end
 

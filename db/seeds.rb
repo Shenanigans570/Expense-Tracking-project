@@ -5,14 +5,17 @@ Transaction.destroy_all
 Asset.destroy_all
 puts 'DB empty'
 
+puts "seeding user for ryan"
+ryan = User.create(first_name:'Ryan', last_name: 'Sullivan', email: 'ryan@gmail.com', password: 'password')
+
 puts 'seeding users'
 5.times do 
-    User.create(first_name:Faker::Name.first_name, last_name:Faker::Name.last_name, email:Faker::Internet.email)
+    User.create(first_name:Faker::Name.first_name, last_name:Faker::Name.last_name, email:Faker::Internet.email, password:"password")
 end
 puts 'users seeded'
 
 puts 'seeding assets'
-50.times do 
+100.times do 
     t =  Asset.create(investment_name: Faker::Company.name, investment_amount: Faker::Number.number(digits:7),user_id: User.all.sample.id)
 if !t.id
     puts t.errors.full_messages
@@ -21,7 +24,7 @@ end
  puts 'assets seeded'
 
 puts 'seeding transactions'
-50.times do 
+200.times do 
     t = Transaction.create(vendor_name:Faker::Company.name, amount_spent: Faker::Commerce.price(range: 0..1000, as_string: false), user_id:User.all.sample.id, asset_id:Asset.all.sample.id)
     if !t.id
         puts t.errors.full_messages
